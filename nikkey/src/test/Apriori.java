@@ -20,6 +20,7 @@ class AprioriCalculation
     double minSup;
     String oneVal[];
     String itemSep = " ";
+  
 
  public void aprioriProcess()
     {
@@ -73,7 +74,7 @@ public static String getInput()
         System.out.println("\tConfig File: " + configFile);
         System.out.println("\tTransa File: " + transaFile);
         System.out.println("\tOutput File: " + outputFile);
-        System.out.println("\nPress 'C' to change the item separator, configuration file and transaction files");
+       /* System.out.println("\nPress 'C' to change the item separator, configuration file and transaction files");
         System.out.print("or any other key to continue.  ");
         input=getInput();
  if(input.compareToIgnoreCase("c")==0)
@@ -99,7 +100,7 @@ public static String getInput()
             input=getInput();
             if(input.compareToIgnoreCase("")!=0)
                 itemSep=input;
-        }
+        }*/
 
         try
         {
@@ -121,7 +122,7 @@ public static String getInput()
              minSup/=100.0;
 
             oneVal = new String[numItems];
-            System.out.print("Enter 'y' to change the value each row recognizes as a '1':");
+           /* System.out.print("Enter 'y' to change the value each row recognizes as a '1':");
             if(getInput().compareToIgnoreCase("y")==0)
             {
                 for(int i=0; i<oneVal.length; i++)
@@ -130,13 +131,14 @@ public static String getInput()
                     oneVal[i] = getInput();
                 }
             }
-            else
+            else*/
                 for(int i=0; i<oneVal.length; i++)
                     oneVal[i]="1";
             fw= new FileWriter(outputFile);
             file_out = new BufferedWriter(fw);
             file_out.write(numTransactions + "\n");
             file_out.write(numItems + "\n******\n");
+          //  file_out.write("Frequent ItemSet"+" "+"Support Count"+"\n");
             file_out.close();
         }
                 catch(IOException e)
@@ -198,7 +200,7 @@ public static String getInput()
  private void calculateFrequentItemsets(int n)
     {
         Vector<String> frequentCandidates = new Vector<String>();
-                FileInputStream file_in;
+        FileInputStream file_in;
         BufferedReader data_in;
         FileWriter fw;
         BufferedWriter file_out;
@@ -241,7 +243,7 @@ public static String getInput()
                   if((count[i]/(double)numTransactions)>=minSup)
                     {
                         frequentCandidates.add(candidates.get(i));
-                        file_out.write(candidates.get(i) + "," + count[i]/(double)numTransactions + "\n");
+                        file_out.write("["+candidates.get(i)+"]" + "," + count[i]/(double)numTransactions + "\n");
                     }
                 }
                 file_out.write("-\n");
