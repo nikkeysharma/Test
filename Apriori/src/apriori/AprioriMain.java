@@ -164,7 +164,8 @@ class FrequentItemSetGenerator<I> {
            for (int j = i + 1; j < listSize; ++j) {
                Set<I> candidate = tryMergeItemsets(list.get(i), list.get(j));
 
-               if (candidate != null) {
+               if (candidate != null) 
+               {
                    ret.add(candidate);
                }
            }
