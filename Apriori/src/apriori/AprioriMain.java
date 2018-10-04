@@ -166,7 +166,6 @@ class FrequentItemSetGenerator<I> {
 
                if (candidate != null) 
                {
-            	   System.out.println("Checking github");
                    ret.add(candidate);
                }
            }
